@@ -36,6 +36,9 @@ public class Block {
 	public float getPreviousHash() {
 		return previousHash;
 	}
+	public void setPreviousHash(float previousHash) {
+		this.previousHash = previousHash;
+	}
 	public boolean isEqual (Block temp) {
 		return (previousHash == temp.currentHash);
 	}

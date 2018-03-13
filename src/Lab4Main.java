@@ -12,7 +12,8 @@ public class Lab4Main {
 			System.out.println ("2 to add a good block: ");
 			System.out.println ("3 to add a bad block: ");
 			System.out.println ("4 to verify chain: ");
-			System.out.println ("5 to quit: ");
+			System.out.println ("5 delete bad blocks in the chain: ");
+			System.out.println ("6 to quit: ");
 			menuChoice = keyboard.next();
 			
 			switch (menuChoice.charAt(0)) {
@@ -26,7 +27,9 @@ public class Lab4Main {
 							System.out.println ("Chain is verified");
 					   else  System.out.println ("Chain is broken");
 	          		  break;
-			case '5': System.out.println ("Goodbye");
+			case '5':  myBlockChain.deleteBlock();
+			  		  break;
+			case '6': System.out.println ("Goodbye");
 					  break;
 			default:  System.out.println ("Invalid choice...");
 			}

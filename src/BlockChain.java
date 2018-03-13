@@ -11,8 +11,9 @@ public class BlockChain {
 	
 	public void printBlockChain() {
 		Block temp = head;
+		System.out.println(courseName);
 		while(temp!=null) {
-			System.out.println(courseName+"\n"+temp);
+			System.out.print(temp+"\n");
 			temp = temp.next();
 		}
 		
@@ -28,6 +29,7 @@ public class BlockChain {
 			}
 			else {
 				state = false;
+				break;
 			}
 			temp = temp.next();
 		}
@@ -50,9 +52,32 @@ public class BlockChain {
 			tail.updateNext(newOne);
 			tail = newOne;	
 		}
+	}
 		
+	public void deleteBlock() {
+		Block temp = head;
+		while(temp!=null && temp.next()!=null) {
+			if(!temp.next().isEqual(temp)) {
+				//bad is last
+				if(temp.next().next()==null) {
+					temp.updateNext(null);
+				}
+				else{
+					updateBlock(temp);
+				}
+			}
+			temp = temp.next();
+		}
+
 	}
 	
-	
-
+	public void updateBlock(Block temp) {
+		//next next is a good one
+		if(temp.next().next().isEqual(temp.next())) {
+			temp.next().next().setPreviousHash(temp.getCurrentHash());
+			temp.updateNext(temp.next().next());
+		}else {
+			temp.updateNext(null);
+		}
+	}
 }
